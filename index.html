@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAP Lamaran 2026 - Pricelist</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* 💡 TIPS: Pastikan kamu sudah mengupload file 'background-lamaran.jpg' ke repository ini */
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('background-lamaran.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #f8fafc;
+            padding: 20px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 20px 0;
+        }
+
+        .header h1 {
+            font-size: 24pt;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header p {
+            font-size: 10pt;
+            color: #cbd5e1;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 13pt;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 25px 0 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 6px;
+        }
+
+        /* Card Paket Transparan Elegan */
+        .package-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .package-name {
+            font-size: 15pt;
+            font-weight: bold;
+            color: #f59e0b; /* Gold */
+            margin-bottom: 4px;
+        }
+
+        .package-price {
+            font-size: 18pt;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .package-features {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .package-features li {
+            font-size: 10.5pt;
+            color: #e2e8f0;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .package-features li::before {
+            content: "•";
+            color: #f59e0b;
+            font-weight: bold;
+            display: inline-block; 
+            width: 15px;
+        }
+
+        /* Kotak Rincian Pembayaran Otomatis */
+        .payment-summary {
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 11pt;
+        }
+
+        .summary-row:last-child {
+            margin-bottom: 0;
+            padding-top: 8px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.2);
+            font-weight: bold;
+        }
+
+        .summary-value {
+            color: #f59e0b;
+            font-weight: bold;
+        }
+
+        .summary-value.white {
+            color: #ffffff;
+        }
+
+        /* Form Elegan */
+        .form-container {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 9.5pt;
+            color: #94a3b8;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 10.5pt;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #f59e0b;
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #16a34a;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 11pt;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+        }
+
+        .btn-submit:hover {
+            background: #15803d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>NAP LAMARAN</h1>
+        <p>Engagement Photography Pricelist 2026</p>
+    </div>
+
+    <div class="section-title">Pilihan Paket Lamaran</div>
+    
+    <div class="package-card">
+        <div class="package-name">NAP LAMARAN 01</div>
+        <div class="package-price">Rp 500.000</div>
+        <ul class="package-features">
+            <li>2 Fotografer</li>
+            <li>Sampai selesai acara</li>
+            <li>All File Edited</li>
+            <li>free 1 Video Teaser</li>
+            <li>Soft File On G-Drive</li>
+    </div>
+
+    <div class="package-card">
+        <div class="package-name">NAP LAMARAN 02</div>
+        <div class="package-price">Rp 750.000</div>
+        <ul class="package-features">
+            <li>2 Fotografer</li>
+            <li>Samapai selesai acara</li>
+            <li>All File Edited</li>
+            <li>40 Lembar 4R</li>
+            <li>1 Album Mini magnetic</li>
+            <li>1 Foto 12R + Frame</li>
+            <li>Free Video Teaser</li>
+        </ul>
+    </div>
+
+    <div class="package-card">
+        <div class="package-name">NAP LAMARAN 03</div>
+        <div class="package-price">Rp 1.000.000</div>
+        <ul class="package-features">
+            <li>2 Fotografer</li>
+            <li>Samapai selesai acara</li>
+            <li>All File Edited</li>
+            <li>80 Lembar 4R</li>
+            <li>2 Lembar 10R</li>
+            <li>1 Album magnetic</li>
+            <li>Free Video Teaser</li>
+    </div>
+
+    <div class="package-card">
+        <div class="package-name">NAP LAMARAN 04</div>
+        <div class="package-price">Rp 1.250.000</div>
+        <ul class="package-features">
+            <li>2 Fotografer</li>
+            <li>Samapai selesai acara</li>
+            <li>All File Edited</li>
+            <li>80 Lembar 4R</li>
+            <li>2 Lembar 10R</li>
+            <li>1 Album magnetic</li>
+            <li>1 Foto 12R + Frame</li>
+            <li>Free Video Teaser</li>
+    </div>
+
+    <div class="package-card">
+        <div class="package-name">NAP LAMARAN 05</div>
+        <div class="package-price">Rp 2.500.000</div>
+        <ul class="package-features">
+            <li>2 Fotografer</li>
+            <li>Samapai selesai acara</li>
+            <li>All File Edited</li>
+            <li>80 Lembar 4R</li>
+            <li>2 Lembar 10R</li>
+            <li>1 Album magnetic</li>
+            <li>1 Foto 12R + Frame</li>
+            <li>Video Cinematic</li>
+            <li>Free Video Teaser</li>
+    </div>
+
+    <div class="section-title">Formulir Penjadwalan & Nota</div>
+    
+    <div class="form-container">
+        <div class="payment-summary">
+            <div class="summary-row">
+                <span>Total Harga:</span>
+                <span id="displayTotal" class="summary-value white">Rp 1.500.000</span>
+            </div>
+            <div class="summary-row">
+                <span>Minimal DP (20%):</span>
+                <span id="displayDP" class="summary-value">Rp 300.000</span>
+            </div>
+            <div class="summary-row">
+                <span>Sisa Pelunasan:</span>
+                <span id="displaySisa" class="summary-value white">Rp 1.200.000</span>
+            </div>
+        </div>
+
+        <form id="bookingForm" onsubmit="kirimWhatsApp(event)">
+            <div class="form-group">
+                <label for="paket">Paket Lamaran Terpilih</label>
+                <select id="paket" required onchange="hitungOtomatis()">
+                    <option value="NAP LAMARAN 01">NAP LAMARAN 01 - Rp 500.000</option>
+                    <option value="NAP LAMARAN 02">NAP LAMARAN 02 - Rp 750.000</option>
+                    <option value="NAP LAMARAN 03">NAP LAMARAN 03 - Rp 1.000.000</option>
+                    <option value="NAP LAMARAN 04">NAP LAMARAN 04 - Rp 1.250.000</option>
+                    <option value="NAP LAMARAN 05">NAP LAMARAN 05 - Rp 2.500.000</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="pria">Nama Calon Pengantin Pria</label>
+                <input type="text" id="pria" required placeholder="Nama pengantin pria...">
+            </div>
+
+            <div class="form-group">
+                <label for="wanita">Nama Calon Pengantin Wanita</label>
+                <input type="text" id="wanita" required placeholder="Nama pengantin wanita...">
+            </div>
+
+            <div class="form-group">
+                <label for="mua">MUA / Dekorasi</label>
+                <input type="text" id="mua" required placeholder="Nama vendor MUA/Dekor...">
+            </div>
+
+            <div class="form-group">
+                <label for="acara">Jenis Acara</label>
+                <input type="text" id="acara" value="Lamaran / Engagement" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tanggal">Tanggal Acara</label>
+                <input type="text" id="tanggal" required placeholder="Contoh: Sabtu, 6 Juni 2026">
+            </div>
+
+            <div class="form-group">
+                <label for="jam">Jam / Waktu Mulai</label>
+                <input type="text" id="jam" required placeholder="Contoh: 09.00 - Selesai">
+            </div>
+
+            <div class="form-group">
+                <label for="ig">Instagram Klien</label>
+                <input type="text" id="ig" placeholder="@username_klien atau Kosong">
+            </div>
+
+            <div class="form-group">
+                <label for="lokasi">Lokasi Lengkap Acara</label>
+                <input type="text" id="lokasi" required placeholder="Alamat rumah / gedung...">
+            </div>
+
+            <div class="form-group">
+                <label for="buktiTransfer">Konfirmasi DP (20%)</label>
+                <select id="buktiTransfer">
+                    <option value="ya">Ya, Sudah Siap Kirim Bukti Transfer</option>
+                    <option value="tidak">Belum Transfer</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-submit">Kirim Jadwal via WhatsApp</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function formatRupiah(angka) {
+        return "Rp " + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+    // Fungsi Hitung Otomatis di Tampilan Web (Live)
+    function hitungOtomatis() {
+        const paket = document.getElementById('paket').value;
+        let hargaGlobal = paket === "NAP LAMARAN 01" ? 1500000 : 2500000;
+        
+        let dp = hargaGlobal * 0.20;
+        let sisa = hargaGlobal - dp;
+
+        // Ubah teks di layar
+        document.getElementById('displayTotal').innerText = formatRupiah(hargaGlobal);
+        document.getElementById('displayDP').innerText = formatRupiah(dp);
+        document.getElementById('displaySisa').innerText = formatRupiah(sisa);
+    }
+
+    function kirimWhatsApp(event) {
+        event.preventDefault();
+
+        const paket = document.getElementById('paket').value;
+        const pria = document.getElementById('pria').value;
+        const wanita = document.getElementById('wanita').value;
+        const mua = document.getElementById('mua').value;
+        const acara = document.getElementById('acara').value;
+        const tanggal = document.getElementById('tanggal').value;
+        const jam = document.getElementById('jam').value;
+        const ig = document.getElementById('ig').value || "Kosong";
+        const lokasi = document.getElementById('lokasi').value;
+        const buktiTransfer = document.getElementById('buktiTransfer').value;
+
+        let hargaGlobal = paket === "NAP LAMARAN 01" ? 1500000 : 2500000;
+        let dp = hargaGlobal * 0.20;
+        let sisa = hargaGlobal - dp;
+
+        // Format Pesan WhatsApp Rapi menggunakan Backtick
+        let teksWA = `*BOOKING NEW ORDER - NAP STUDIO*
+
+• *Paket Terpilih:* ${paket}
+• *Total Harga:* ${formatRupiah(hargaGlobal)}
+• *DP Minimal (20%):* ${formatRupiah(dp)}
+• *Sisa Pelunasan:* ${formatRupiah(sisa)}
+
+*DATA PENJADWALAN:*
+• *Pengantin Pria:* ${pria}
+• *Pengantin Wanita:* ${wanita}
+• *MUA / Vendor:* ${mua}
+• *Acara:* ${acara}
+• *Tanggal:* ${tanggal}
+• *Jam / Waktu:* ${jam}
+• *Instagram Klien:* ${ig}
+• *Lokasi Acara:* ${lokasi}`;
+
+        if (buktiTransfer === "ya") {
+            teksWA += `
+
+*Catatan:* Foto bukti transfer DP sudah siap saya lampirkan dari galeri.`;
+        } else {
+            teksWA += `
+
+*Catatan:* Belum melampirkan file foto bukti transfer.`;
+        }
+
+        const nomorTujuan = "62810985372"; 
+        const urlWhatsApp = `https://api.whatsapp.com/send?phone=${nomorTujuan}&text=${encodeURIComponent(teksWA)}`;
+
+        window.open(urlWhatsApp, '_blank');
+    }
+</script>
+
+</body>
+</html>
