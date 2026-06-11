@@ -369,9 +369,11 @@
     // Fungsi Hitung Otomatis di Tampilan Web (Live)
     function hitungOtomatis() {
         const paket = document.getElementById('paket').value;
-        let hargaGlobal = paket === "NAP LAMARAN 01" ? 500000 : 750000 : 1000000 : 1250000 : 2500000;
+        let hargaGlobal = paket === "NAP LAMARAN 01" ? 500000;
+        let hargaGlobal = paket === "NAP LAMARAN 02" ? 750000;
+        let hargaGlobal = paket === "NAP LAMARAN 03" ? 1000000;
         // Format Pesan WhatsApp Rapi menggunakan Backtick
-        let teksWA = `*BOOKING NEW ORDER - NAP STUDIO*
+        let teksWA = `*BOOKING NEW ORDER - NA PHOTOGRAPHY*
 
 • *Paket Terpilih:* ${paket}
 • *Total Harga:* ${formatRupiah(hargaGlobal)}
@@ -398,8 +400,8 @@
 *Catatan:* Belum melampirkan file foto bukti transfer.`;
         }
 
-        const nomorTujuan = "62810985372"; 
-        const urlWhatsApp = `https://api.whatsapp.com/send?phone=${nomorTujuan}&text=${encodeURIComponent(teksWA)}`;
+        const nomorTujuan = "6282116046404"; 
+        const urlWhatsApp = `https://api.whatsapp.com/send?phone=${6282116046404}&text=${encodeURIComponent(teksWA)}`;
 
         window.open(urlWhatsApp, '_blank');
     }
