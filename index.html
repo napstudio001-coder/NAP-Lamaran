@@ -369,35 +369,7 @@
     // Fungsi Hitung Otomatis di Tampilan Web (Live)
     function hitungOtomatis() {
         const paket = document.getElementById('paket').value;
-        let hargaGlobal = paket === "NAP LAMARAN 01" ? 500000 : 750000;
-        
-        let dp = hargaGlobal * 0.20;
-        let sisa = hargaGlobal - dp;
-
-        // Ubah teks di layar
-        document.getElementById('displayTotal').innerText = formatRupiah(hargaGlobal);
-        document.getElementById('displayDP').innerText = formatRupiah(dp);
-        document.getElementById('displaySisa').innerText = formatRupiah(sisa);
-    }
-
-    function kirimWhatsApp(event) {
-        event.preventDefault();
-
-        const paket = document.getElementById('paket').value;
-        const pria = document.getElementById('pria').value;
-        const wanita = document.getElementById('wanita').value;
-        const mua = document.getElementById('mua').value;
-        const acara = document.getElementById('acara').value;
-        const tanggal = document.getElementById('tanggal').value;
-        const jam = document.getElementById('jam').value;
-        const ig = document.getElementById('ig').value || "Kosong";
-        const lokasi = document.getElementById('lokasi').value;
-        const buktiTransfer = document.getElementById('buktiTransfer').value;
-
-        let hargaGlobal = paket === "NAP LAMARAN 01" ? 1500000 : 2500000;
-        let dp = hargaGlobal * 0.20;
-        let sisa = hargaGlobal - dp;
-
+        let hargaGlobal = paket === "NAP LAMARAN 01" ? 500000 : 750000 : 1000000 : 1250000 : 2500000;
         // Format Pesan WhatsApp Rapi menggunakan Backtick
         let teksWA = `*BOOKING NEW ORDER - NAP STUDIO*
 
