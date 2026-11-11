@@ -411,5 +411,29 @@
             window.open(`https://wa.me/${nomorWaAdmin}?text=${encodeURIComponent(pesan)}`, '_blank');
         }
     </script>
-</body>
+</body<!-- Audio Background Player (Letakkan di bagian bawah sebelum tag penutup body) -->
+<div class="fixed bottom-4 right-4 z-50 bg-white/80 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-teal-100 flex items-center space-x-3">
+    <span class="text-xs font-semibold text-teal-700">♫ NAP Romantic Song</span>
+    <audio id="bgMusic" loop>
+        <source src="https://drive.google.com/file/d/1w-iyhr8W9qwufyV2SOllsHLc7z6mGEx3/view?usp=drivesdk" type="audio/mp3">
+    </audio>
+    <button onclick="toggleMusic()" id="musicBtn" class="px-3 py-1.5 bg-teal-600 text-white rounded-xl text-xs font-medium cursor-pointer shadow-sm">
+        Play Musik
+    </button>
+</div>
+
+<script>
+    function toggleMusic() {
+        const music = document.getElementById('bgMusic');
+        const btn = document.getElementById('musicBtn');
+        if (music.paused) {
+            music.play();
+            btn.innerText = "Pause Musik";
+        } else {
+            music.pause();
+            btn.innerText = "Play Musik";
+        }
+    }
+</script>
+>
 </html>
