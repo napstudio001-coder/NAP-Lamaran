@@ -3,129 +3,412 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulir Pengajuan Jadwal | NAOKI ARVINO</title>
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>NAOKI ARVINO PHOTOGRAPHY | 2027 Pricing Portal</title>
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
+        body { font-family: 'Inter', sans-serif; background-color: #ECEEEF; }
+        .font-quote { font-family: 'Playfair Display', serif; }
+        /* Neumorphism Custom Shadows */
+        .neu-card {
+            background: #F1F4F5;
+            box-shadow: 12px 12px 24px #D3D8DB, -12px -12px 24px #FFFFFF;
+        }
+        .neu-card-inset {
+            background: #E8ECEE;
+            box-shadow: inset 4px 4px 8px #D1D6D9, inset -4px -4px 8px #FFFFFF;
+        }
+        .neu-btn {
+            background: linear-gradient(135deg, #0D9488 0%, #115E59 100%);
+            box-shadow: 6px 6px 14px #CBD2D6, -6px -6px 14px #FFFFFF;
+            transition: all 0.2s ease;
+        }
+        .neu-btn:active {
+            box-shadow: inset 3px 3px 6px #0B4F49, inset -3px -3px 6px #157A70;
+        }
+        .neu-input {
+            background: #EAF0F2;
+            box-shadow: inset 3px 3px 6px #D1D8DC, inset -3px -3px 6px #FFFFFF;
+            border: none;
         }
     </style>
 </head>
-<body class="bg-[#F4F9F8] text-slate-800 min-h-screen flex items-center justify-center p-4 sm:p-6">
+<body class="min-h-screen flex items-center justify-center p-4 sm:p-6 text-slate-700">
 
-    <div class="w-full max-w-lg bg-white rounded-3xl shadow-xl shadow-teal-900/5 border border-teal-50 overflow-hidden">
-        <!-- Header / Banner -->
-        <div class="bg-gradient-to-r from-teal-600 to-teal-700 p-8 text-white text-center relative">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
-            <span class="inline-block px-3 py-1 bg-white/20 text-xs font-medium rounded-full tracking-wider mb-3 backdrop-blur-sm">
-                PORTAL JADWAL & KONFIRMASI
-            </span>
-            <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">Atur Jadwal Anda</h1>
-            <p class="text-teal-100 text-sm mt-2 font-light">Silakan lengkapi data di bawah untuk mengirimkan jadwal langsung via WhatsApp.</p>
-        </div>
+    <div class="w-full max-w-4xl mx-auto">
 
-        <!-- Form Body -->
-        <div class="p-6 sm:p-8 space-y-6">
-            <form id="scheduleForm" onsubmit="handleSendWhatsApp(event)" class="space-y-5">
-                
-                <!-- Nama Lengkap -->
-                <div class="space-y-1.5">
-                    <label for="nama" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Nama Lengkap</label>
-                    <input type="text" id="nama" required 
-                        placeholder="Contoh: Budi Santoso"
-                        class="w-full px-4 py-3 bg-[#F9FBFA] border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-sm">
-                </div>
+        <!-- ================= STEP 1: WELCOME SCREEN ================= -->
+        <div id="stepWelcome" class="neu-card rounded-[36px] p-8 sm:p-14 text-center space-y-6 relative overflow-hidden">
+            <div class="absolute -top-16 -right-16 w-48 h-48 bg-gradient-to-br from-teal-400/30 to-emerald-500/20 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute -bottom-16 -left-16 w-48 h-48 bg-gradient-to-tr from-amber-400/20 to-orange-400/20 rounded-full blur-2xl pointer-events-none"></div>
 
-                <!-- Keperluan / Layanan -->
-                <div class="space-y-1.5">
-                    <label for="keperluan" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Keperluan / Layanan</label>
-                    <select id="keperluan" required
-                        class="w-full px-4 py-3 bg-[#F9FBFA] border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-sm cursor-pointer">
-                        <option value="" disabled selected>Pilih Keperluan</option>
-                        <option value="Sesi Foto Prewedding / Wedding">Sesi Foto Prewedding / Wedding</option>
-                        <option value="Konsultasi & Diskusi Proyek">Konsultasi & Diskusi Proyek</option>
-                        <option value="Interview / Wawancara">Interview / Wawancara</option>
-                        <option value="Lainnya">Lainnya</option>
-                    </select>
-                </div>
+            <div class="w-24 h-24 mx-auto neu-card rounded-full flex items-center justify-center text-teal-700 font-bold text-2xl tracking-widest border border-white/60">
+                NAP
+            </div>
 
-                <!-- Grid Tanggal & Jam -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <!-- Tanggal -->
-                    <div class="space-y-1.5">
-                        <label for="tanggal" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Tanggal</label>
-                        <input type="date" id="tanggal" required 
-                            class="w-full px-4 py-3 bg-[#F9FBFA] border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-sm">
-                    </div>
-                    <!-- Jam -->
-                    <div class="space-y-1.5">
-                        <label for="jam" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Waktu / Jam</label>
-                        <input type="time" id="jam" required 
-                            class="w-full px-4 py-3 bg-[#F9FBFA] border border-slate-200 rounded-xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-sm">
-                    </div>
-                </div>
+            <div class="space-y-2">
+                <span class="inline-block px-4 py-1.5 bg-teal-50 text-teal-700 text-xs font-semibold rounded-full tracking-wider uppercase shadow-sm">
+                    Exclusive Photography Portal
+                </span>
+                <h1 class="text-2xl sm:text-4xl font-bold text-slate-800 tracking-tight">
+                    Selamat Datang di<br>
+                    <span class="bg-gradient-to-r from-teal-600 to-emerald-700 bg-clip-text text-transparent">NAOKI ARVINO PHOTOGRAPHY</span>
+                </h1>
+                <p class="text-slate-400 text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase pt-1">
+                    Professional Photographer
+                </p>
+            </div>
 
-                <!-- Catatan Tambahan -->
-                <div class="space-y-1.5">
-                    <label for="catatan" class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Catatan Tambahan (Opsional)</label>
-                    <textarea id="catatan" rows="3" 
-                        placeholder="Tuliskan catatan atau detail tambahan jika ada..."
-                        class="w-full px-4 py-3 bg-[#F9FBFA] border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-sm resize-none"></textarea>
-                </div>
+            <p class="text-slate-500 text-sm max-w-md mx-auto font-light leading-relaxed">
+                Abadikan setiap momen berharga Anda dengan sentuhan visual estetik dan berkelas.
+            </p>
 
-                <!-- Tombol Kirim -->
-                <button type="submit" 
-                    class="w-full py-3.5 px-6 bg-teal-600 hover:bg-teal-700 text-white font-medium rounded-xl shadow-lg shadow-teal-600/25 transition-all duration-200 flex items-center justify-center space-x-2 text-sm cursor-pointer">
-                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.767 5.766 0 1.016.269 1.968.736 2.793l-.784 2.868 2.946-.773c.792.433 1.716.685 2.669.685 3.181 0 5.767-2.587 5.767-5.766 0-3.181-2.586-5.779-5.763-5.779zm3.435 8.19c-.145.41-.84.77-1.163.82-.315.05-.718.093-1.157-.045-.268-.084-.613-.2-1.077-.4-1.892-.816-3.13-2.738-3.226-2.864-.096-.126-.77-1.025-.77-1.955 0-.93.483-1.388.655-1.577.174-.19.378-.238.504-.238.126 0 .252.001.362.008.116.007.272-.044.425.321.155.374.526 1.283.572 1.376.046.094.077.204.011.33-.065.127-.098.206-.193.318-.096.113-.203.252-.29.338-.097.095-.2.2-.086.398.114.197.505.833 1.083 1.349.744.664 1.371.87 1.567.967.196.097.311.082.426-.051.116-.134.498-.582.631-.782.133-.199.266-.167.447-.101.182.066 1.153.544 1.351.644.198.1.33.15.378.234.048.084.048.487-.097.897z"/>
-                    </svg>
-                    <span>Kirim Jadwal via WhatsApp</span>
+            <div class="pt-4">
+                <button onclick="goToStep(2)" class="neu-btn px-10 py-4 text-white font-medium rounded-2xl text-sm tracking-wide cursor-pointer">
+                    Lanjutkan &rarr;
                 </button>
-            </form>
+            </div>
         </div>
 
-        <!-- Footer -->
-        <div class="bg-[#F4F9F8] px-6 py-4 border-t border-teal-50 text-center">
-            <p class="text-xs text-slate-400">© 2026 • Secure Schedule Gateway</p>
+
+        <!-- ================= STEP 2: QUOTE & KATEGORI (PRICING 2027) ================= -->
+        <div id="stepQuoteCategory" class="hidden space-y-8">
+            <div class="neu-card rounded-[36px] p-8 sm:p-12 text-center space-y-8 relative overflow-hidden">
+                <button onclick="goToStep(1)" class="absolute top-6 left-6 px-4 py-2 bg-white/60 hover:bg-white text-teal-700 rounded-xl text-xs font-semibold shadow-sm transition-all cursor-pointer">
+                    &larr; Kembali
+                </button>
+
+                <!-- Typography Quote Keren & Estetik -->
+                <div class="max-w-xl mx-auto space-y-3 pt-4">
+                    <span class="text-xs font-bold text-teal-600 uppercase tracking-[0.3em]">Our Philosophy</span>
+                    <blockquote class="font-quote italic text-xl sm:text-2xl text-slate-800 leading-relaxed">
+                        "Photography is a story that I fail to put into words. We freeze fractions of a second so they last a lifetime."
+                    </blockquote>
+                    <p class="text-xs text-slate-400 font-medium tracking-widest uppercase">— NAP Studio</p>
+                </div>
+
+                <div class="w-24 h-px bg-slate-300 mx-auto"></div>
+
+                <!-- Bagian Pricing 2027 & Tombol Kategori -->
+                <div class="space-y-6">
+                    <div class="space-y-1">
+                        <span class="inline-block px-3 py-1 bg-teal-50 text-teal-700 text-[10px] font-bold rounded-full tracking-widest uppercase">
+                            Exclusive Catalog
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 tracking-tight">PRICING 2027</h2>
+                        <p class="text-xs text-slate-400">Pilih kategori layanan dokumentasi di bawah ini:</p>
+                    </div>
+
+                    <!-- Tombol Kategori Pilihan -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto pt-2">
+                        <button onclick="showCategoryPackages('wedding')" class="neu-btn py-4 px-6 text-white font-semibold rounded-2xl text-sm tracking-wider uppercase cursor-pointer">
+                            Wedding
+                        </button>
+                        <button onclick="showCategoryPackages('engagement')" class="neu-btn py-4 px-6 text-white font-semibold rounded-2xl text-sm tracking-wider uppercase cursor-pointer">
+                            Engagement
+                        </button>
+                        <button onclick="showCategoryPackages('prewedding')" class="neu-btn py-4 px-6 text-white font-semibold rounded-2xl text-sm tracking-wider uppercase cursor-pointer">
+                            Prewedding
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
+        <!-- ================= STEP 3: PILIH PAKET BERDASARKAN KATEGORI ================= -->
+        <div id="stepPackages" class="hidden space-y-6">
+            <div class="neu-card rounded-[28px] p-6 sm:p-8 flex items-center justify-between">
+                <button onclick="goToStep(2)" class="px-4 py-2 bg-white/60 hover:bg-white text-teal-700 rounded-xl text-xs font-semibold shadow-sm transition-all cursor-pointer">
+                    &larr; Pilih Kategori Lain
+                </button>
+                <div class="text-center">
+                    <h2 id="categoryTitle" class="text-xl sm:text-2xl font-bold text-slate-800 uppercase tracking-wide">Daftar Paket</h2>
+                    <p class="text-xs text-slate-400 mt-0.5">Pilih paket terbaik untuk momen spesial Anda</p>
+                </div>
+                <div class="w-16"></div>
+            </div>
+
+            <!-- Kontainer Daftar Paket Dinamis -->
+            <div id="packageContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Paket akan dimuat lewat JavaScript sesuai kategori yang diklik -->
+            </div>
+        </div>
+
+
+        <!-- ================= STEP 4: FORMULIR DATA & PAYMENT / NOTICE ================= -->
+        <div id="stepForm" class="hidden space-y-6">
+            <div class="neu-card rounded-[32px] p-6 sm:p-10 space-y-6">
+                
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-200/60 pb-5">
+                    <div>
+                        <button onclick="goToStep(3)" class="text-xs text-teal-700 font-semibold hover:underline mb-1 inline-block cursor-pointer">
+                            &larr; Ganti Paket Lain
+                        </button>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800">REGISTRATION</h2>
+                    </div>
+                    <div class="mt-3 sm:mt-0 text-left sm:text-right neu-card-inset px-4 py-3 rounded-2xl">
+                        <p class="text-[10px] font-bold text-teal-700 uppercase tracking-wider">Selected Package:</p>
+                        <p id="selectedPackageName" class="text-sm font-bold text-slate-800">-</p>
+                        <p id="selectedPackagePrice" class="text-xs font-semibold text-teal-700">Rp 0</p>
+                    </div>
+                </div>
+
+                <form id="bookingForm" onsubmit="handleConfirmBooking(event)" class="space-y-5">
+                    
+                    <!-- Kalkulator DP 20% Otomatis di Atas Form -->
+                    <div class="neu-card-inset p-4 rounded-2xl space-y-1.5">
+                        <div class="flex justify-between text-xs text-slate-600">
+                            <span>Total Amount:</span>
+                            <span id="calcTotalHarga" class="font-semibold">Rp 0</span>
+                        </div>
+                        <div class="flex justify-between text-xs text-slate-600">
+                            <span>Minimal Down Payment (20%):</span>
+                            <span id="calcNominalDp" class="font-semibold text-teal-700">Rp 0</span>
+                        </div>
+                        <div class="flex justify-between text-xs text-slate-500 pt-1 border-t border-slate-300/60">
+                            <span>Remaining Balance:</span>
+                            <span id="calcSisaPelunasan" class="font-semibold">Rp 0</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="space-y-1">
+                            <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Groom's Name (Nama Pengantin Pria)</label>
+                            <input type="text" id="clientNama" required placeholder="Enter full name..."
+                                class="w-full px-4 py-3 neu-input rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Bride's Name (Nama Pengantin Wanita)</label>
+                            <input type="text" id="clientWanita" required placeholder="Enter full name..."
+                                class="w-full px-4 py-3 neu-input rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Makeup Artist (MUA)</label>
+                            <input type="text" id="clientMua" placeholder="Sanggar / MUA name..."
+                                class="w-full px-4 py-3 neu-input rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Google Maps Location Link</label>
+                            <input type="url" id="clientMaps" placeholder="Paste share location link here..."
+                                class="w-full px-4 py-3 neu-input rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Event Type (Acara)</label>
+                                <select id="clientAcara" required class="w-full px-4 py-3 neu-input rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 cursor-pointer">
+                                    <option value="Wedding / Pernikahan">Wedding / Pernikahan</option>
+                                    <option value="Engagement / Pertunangan">Engagement / Pertunangan</option>
+                                    <option value="Prewedding">Prewedding</option>
+                                </select>
+                            </div>
+
+                            <div class="space-y-1">
+                                <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Wedding Date (Tanggal Acara)</label>
+                                <input type="date" id="clientTanggal" required
+                                    class="w-full px-4 py-3 neu-input rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Time Schedule (Jam)</label>
+                                <input type="time" id="clientJam" required
+                                    class="w-full px-4 py-3 neu-input rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                            </div>
+
+                            <div class="space-y-1">
+                                <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Instagram Client</label>
+                                <input type="text" id="clientIg" placeholder="@username_klien"
+                                    class="w-full px-4 py-3 neu-input rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Alamat Lengkap</label>
+                            <textarea id="clientAlamat" rows="2" required placeholder="Desa Mijen RT 01/RW 02, Kec. Kebonagung, Demak"
+                                class="w-full px-4 py-3 neu-input rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method Box (Sesuai Video Referensi) -->
+                    <div class="neu-card-inset p-5 rounded-2xl space-y-2 border border-slate-300/40">
+                        <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider">Payment Method:</h3>
+                        <ul class="text-xs text-slate-600 space-y-1 font-medium">
+                            <li>• Down Payment minimal sebesar 20%</li>
+                            <li>• <strong>Bank BCA: 0810985372</strong></li>
+                            <li>• a.n. <strong>MUH MUKHID</strong></li>
+                        </ul>
+                        <p class="text-[11px] text-slate-400 pt-1">
+                            *Pelunasan dilakukan pada Hari H acara, maksimal H+2 setelah acara.
+                        </p>
+                    </div>
+
+                    <!-- Reservation Notice Box (Sesuai Video Referensi) -->
+                    <div class="neu-card p-5 rounded-2xl space-y-2 border border-teal-200">
+                        <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider text-center font-quote italic">RESERVATION NOTICE</h3>
+                        <p class="text-xs text-slate-600 italic text-center leading-relaxed">
+                            "Jadwal hari bahagia Anda akan resmi kami amankan setelah melakukan konfirmasi Down Payment (DP). Mohon kirimkan lampiran foto bukti transfer Anda melalui chat WhatsApp setelah menekan tombol di bawah ini."
+                        </p>
+                    </div>
+
+                    <!-- Tombol Confirm Booking via WhatsApp -->
+                    <button type="submit" class="neu-btn w-full py-4 text-white font-medium rounded-2xl text-sm tracking-wide cursor-pointer flex items-center justify-center space-x-2 shadow-lg">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.767 5.766 0 1.016.269 1.968.736 2.793l-.784 2.868 2.946-.773c.792.433 1.716.685 2.669.685 3.181 0 5.767-2.587 5.767-5.766 0-3.181-2.586-5.779-5.763-5.779zm3.435 8.19c-.145.41-.84.77-1.163.82-.315.05-.718.093-1.157-.045-.268-.084-.613-.2-1.077-.4-1.892-.816-3.13-2.738-3.226-2.864-.096-.126-.77-1.025-.77-1.955 0-.93.483-1.388.655-1.577.174-.19.378-.238.504-.238.126 0 .252.001.362.008.116.007.272-.044.425.321.155.374.526 1.283.572 1.376.046.094.077.204.011.33-.065.127-.098.206-.193.318-.096.113-.203.252-.29.338-.097.095-.2.2-.086.398.114.197.505.833 1.083 1.349.744.664 1.371.87 1.567.967.196.097.311.082.426-.051.116-.134.498-.582.631-.782.133-.199.266-.167.447-.101.182.066 1.153.544 1.351.644.198.1.33.15.378.234.048.084.048.487-.097.897z"/>
+                        </svg>
+                        <span>CONFIRM BOOKING VIA WHATSAPP</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="text-center mt-6">
+            <p class="text-xs text-slate-400 font-medium">&copy; 2027 NAOKI ARVINO PHOTOGRAPHY &bull; Demak, Central Java</p>
+        </div>
+
     </div>
 
     <script>
-        function handleSendWhatsApp(event) {
-            // Mencegah halaman melakukan reload default form
+        const nomorWaAdmin = "6282116046404";
+        let chosenPackage = { name: '', price: 0 };
+
+        // Database Paket Lengkap
+        const packagesData = {
+            wedding: [
+                { name: 'NAP AKAD', price: 1000000, badge: '', badgeColor: '', desc: ['2 Fotografer', 'Unlimited Shoot-(1 gaun)', '1 Album Hard Cover', '80 lembar Cetak 4R', '2 Lembar Cetak 10R', 'Free Video Teaser', 'Soft File G-Drive'] },
+                { name: 'NAP 01', price: 1400000, badge: '', badgeColor: '', desc: ['2 Fotografer', 'Unlimited Shoot-(gaun terakhir)', '1 Album Hard Cover', '120 lembar Cetak 4R', '3 Lembar Cetak 10R', 'Free Video Teaser', 'Soft File G-Drive'] },
+                { name: 'NAP 02', price: 1600000, badge: '🔥 BESTSELLER TERLARIS', badgeColor: 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-md', desc: ['2 Fotografer', 'Unlimited Shoot-(gaun terakhir)', '1 Album Hard Cover', '120 lembar Cetak 4R', '3 Lembar Cetak 10R', '1 Cetak 12R+Frame', 'Free Video Teaser', 'Soft File G-Drive'] },
+                { name: 'NAP 03', price: 2000000, badge: '', badgeColor: '', desc: ['2 Fotografer', '2 Album Hard Cover', '140 lembar Cetak 4R', '4 Lembar Cetak 10R', '2 Cetak 12R+Frame', 'Free Video Teaser', 'Soft File G-Drive+FD'] },
+                { name: 'NAP 04', price: 2600000, badge: '', badgeColor: '', desc: ['2 Fotografer', 'Unlimited Shoot-(gaun terakhir)', '1 Album Magazine 20x30', '1 Album Hard Cover', '80 lembar Cetak 4R', '2 Lembar Cetak 10R', '2 Cetak 12R+Frame', 'Free Video Teaser', 'Soft File G-Drive+FD'] },
+                { name: 'NAP 05', price: 3000000, badge: '⭐ TERLARIS 2', badgeColor: 'bg-teal-600 text-white shadow-sm', desc: ['2 Fotografer', 'Unlimited Shoot-(gaun terakhir)', '1 Album Magazine 30x30', '1 Album Hard Cover', '120 lembar Cetak 4R', '3 Lembar Cetak 10R', '2 Cetak 12R+Frame', 'Free Video Teaser', 'Soft File G-Drive+FD'] },
+                { name: 'NAP 06', price: 3500000, badge: '', badgeColor: '', desc: ['2 Fotografer', 'Unlimited Shoot-(gaun terakhir)', '1 Album Magazine 30x30', '2 Album Hard Cover', '140 lembar Cetak 4R', '4 Lembar Cetak 10R', '2 Cetak 16R+Frame', 'Free Video Teaser', 'Soft File G-Drive+FD'] },
+                { name: 'NAP GOLD', price: 5500000, badge: '👑 TERLARIS 3 (VIP)', badgeColor: 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-sm', desc: ['3-4 Fotografer', 'Unlimited Shoot-(gaun terakhir)', '1 Album Magazine 30x30', '2 Album Hard Cover', '150 lembar Cetak 4R', '4 Lembar Cetak 10R', '2 Cetak 16R+Frame', '1 Video Cinema', '1 Video Teaser', 'Free Video BTS', 'Soft File G-Drive+FD Custom'] }
+            ],
+            engagement: [
+                { name: 'ENG 01', price: 500000, badge: '🔥 TERLARIS 1', badgeColor: 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-md', desc: ['2 Fotografer', 'Unlimited Shoot-(1 gaun)', 'Soft File', 'Free Video Teaser', 'Soft File G-Drive'] },
+                { name: 'ENG 02', price: 750000, badge: '', badgeColor: '', desc: ['2 Fotografer', 'Unlimited Shoot-(1 gaun)', '2 Cetak 12R+Frame', 'Free Video Teaser', 'Soft File G-Drive'] },
+                { name: 'ENG 03', price: 1000000, badge: '⭐ TERLARIS 2', badgeColor: 'bg-teal-600 text-white shadow-sm', desc: ['2 Fotografer', 'Unlimited Shoot-(1 gaun)', '1 Album Magnetic', '40 lembar Cetak 4R', '1 Lembar Cetak 8R', '2 Cetak 12R+Frame', 'Free Video Teaser', 'Soft File G-Drive'] },
+                { name: 'ENG 04', price: 1200000, badge: '', badgeColor: '', desc: ['2 Fotografer', 'Unlimited Shoot-(1 gaun)', '1 Album Magnetic', '80 lembar Cetak 4R', '2 Lembar Cetak 10R', '2 Cetak 12R+Frame', 'Free Video Teaser', 'Soft File G-Drive'] },
+                { name: 'ENG 05', price: 2000000, badge: '👑 TERLARIS 3', badgeColor: 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-sm', desc: ['2 Fotografer', 'Unlimited Shoot-(1 gaun)', '1 Album Magazine 20x30', '1 Box Cover Album', '2 Cetak 12R+Frame', 'Free Video Teaser', 'Soft File G-Drive'] }
+            ],
+            prewedding: [
+                { name: 'Paket Prewedding (Menyusul)', price: 0, badge: '', badgeColor: '', desc: ['Segera Hadir'] }
+            ]
+        };
+
+        function formatRupiah(number) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
+        }
+
+        function goToStep(step) {
+            document.getElementById('stepWelcome').classList.add('hidden');
+            document.getElementById('stepQuoteCategory').classList.add('hidden');
+            document.getElementById('stepPackages').classList.add('hidden');
+            document.getElementById('stepForm').classList.add('hidden');
+
+            if (step === 1) document.getElementById('stepWelcome').classList.remove('hidden');
+            if (step === 2) document.getElementById('stepQuoteCategory').classList.remove('hidden');
+            if (step === 3) document.getElementById('stepPackages').classList.remove('hidden');
+            if (step === 4) document.getElementById('stepForm').classList.remove('hidden');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showCategoryPackages(category) {
+            const container = document.getElementById('packageContainer');
+            container.innerHTML = '';
+            
+            document.getElementById('categoryTitle').innerText = `Kategori: ${category.toUpperCase()}`;
+
+            const list = packagesData[category] || [];
+            list.forEach(pkg => {
+                let descHtml = pkg.desc.map(d => `<li>• ${d}</li>`).join('');
+                let badgeHtml = pkg.badge 
+                    ? `<span class="absolute -top-3 right-6 ${pkg.badgeColor} text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">${pkg.badge}</span>` 
+                    : '';
+                let borderClass = pkg.badge ? 'border-2 border-teal-500 relative' : '';
+
+                let card = `
+                    <div class="neu-card p-6 sm:p-7 rounded-[28px] flex flex-col justify-between ${borderClass}">
+                        ${badgeHtml}
+                        <div>
+                            <span class="text-[10px] font-bold text-teal-600 uppercase tracking-wider bg-teal-50 px-2.5 py-1 rounded-md">2027 Edition</span>
+                            <h3 class="text-lg font-bold text-slate-800 mt-3">${pkg.name}</h3>
+                            <p class="text-2xl font-extrabold text-teal-700 mt-2">${formatRupiah(pkg.price)}</p>
+                            <ul class="mt-4 space-y-2 text-xs text-slate-500 font-medium">
+                                ${descHtml}
+                            </ul>
+                        </div>
+                        <button onclick="selectPackage('${pkg.name}', ${pkg.price})" class="neu-btn mt-6 w-full py-3 text-white font-medium rounded-xl text-xs tracking-wide cursor-pointer">
+                            Pilih Paket Ini
+                        </button>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+
+            goToStep(3);
+        }
+
+        function selectPackage(name, price) {
+            chosenPackage.name = name;
+            chosenPackage.price = price;
+
+            const dp = price * 0.20;
+            const sisa = price - dp;
+
+            document.getElementById('selectedPackageName').innerText = name;
+            document.getElementById('selectedPackagePrice').innerText = formatRupiah(price);
+            document.getElementById('calcTotalHarga').innerText = formatRupiah(price);
+            document.getElementById('calcNominalDp').innerText = formatRupiah(dp);
+            document.getElementById('calcSisaPelunasan').innerText = formatRupiah(sisa);
+
+            goToStep(4);
+        }
+
+        function handleConfirmBooking(event) {
             event.preventDefault();
 
-            // Ambil nilai dari setiap input form
-            const nama = document.getElementById('nama').value.trim();
-            const keperluan = document.getElementById('keperluan').value;
-            const tanggal = document.getElementById('tanggal').value;
-            const jam = document.getElementById('jam').value;
-            const catatan = document.getElementById('catatan').value.trim();
+            const pria = document.getElementById('clientNama').value.trim();
+            const wanita = document.getElementById('clientWanita').value.trim();
+            const acara = document.getElementById('clientAcara').value;
+            const tanggal = document.getElementById('clientTanggal').value;
+            const jam = document.getElementById('clientJam').value;
+            const mua = document.getElementById('clientMua').value.trim();
+            const ig = document.getElementById('clientIg').value.trim();
+            const alamat = document.getElementById('clientAlamat').value.trim();
+            const maps = document.getElementById('clientMaps').value.trim();
 
-            // Format nomor WhatsApp tujuan (Tanpa +, tanpa 0 di depan, awali dengan 62)
-            const nomorWa = "6282116046404";
+            const totalHarga = chosenPackage.price;
+            const nominalDp = totalHarga * 0.20;
 
-            // Susun format teks pesan dengan rapi
-            let pesan = `Halo, saya ingin mengajukan jadwal dengan detail berikut:\n\n` +
-                        `• *Nama*: ${nama}\n` +
-                        `• *Keperluan*: ${keperluan}\n` +
-                        `• *Tanggal*: ${tanggal}\n` +
-                        `• *Waktu*: ${jam} WIB`;
+            let pesan = `Halo Admin NAOKI ARVINO PHOTOGRAPHY,\n\n`;
+            pesan += `Saya ingin melakukan *CONFIRM BOOKING (PRICING 2027)*:\n\n`;
+            pesan += `📋 *REGISTRATION DATA*\n`;
+            pesan += `• *Groom's Name*: ${pria}\n`;
+            pesan += `• *Bride's Name*: ${wanita}\n`;
+            pesan += `• *Event Type*: ${acara}\n`;
+            pesan += `• *Wedding Date*: ${tanggal}\n`;
+            pesan += `• *Time Schedule*: ${jam} WIB\n`;
+            pesan += `• *Alamat Lengkap*: ${alamat}\n`;
+            pesan += `• *Google Maps*: ${maps ? maps : '-'}\n`;
+            pesan += `• *Makeup Artist (MUA)*: ${mua ? mua : '-'}\n`;
+            pesan += `• *Instagram Client*: ${ig ? ig : '-'}\n\n`;
+            pesan += `📸 *PACKAGE & PAYMENT DETAIL*\n`;
+            pesan += `• *Selected Package*: ${chosenPackage.name}\n`;
+            pesan += `• *Total Amount*: ${formatRupiah(totalHarga)}\n`;
+            pesan += `• *Minimal DP (20%)*: ${formatRupiah(nominalDp)}\n`;
+            pesan += `• *Bank Transfer*: BCA 0810985372 a.n. MUH MUKHID\n\n`;
+            pesan += `*Reservation Notice:* Jadwal hari bahagia kami akan resmi diamankan setelah melakukan konfirmasi DP dan mengirimkan bukti transfer. Terima kasih!`;
 
-            if (catatan) {
-                pesan += `\n• *Catatan*: ${catatan}`;
-            }
-
-            pesan += `\n\nMohon konfirmasinya. Terima kasih!`;
-
-            // Buat URL API WhatsApp dengan fungsi encodeURIComponent agar spasi dan enter aman
-            const urlWa = `https://wa.me/${nomorWa}?text=${encodeURIComponent(pesan)}`;
-
-            // Buka link WhatsApp di tab/aplikasi baru
-            window.open(urlWa, '_blank');
+            window.open(`https://wa.me/${nomorWaAdmin}?text=${encodeURIComponent(pesan)}`, '_blank');
         }
     </script>
 </body>
